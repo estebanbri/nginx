@@ -12,7 +12,7 @@ Dicha url localhost/nocached va a ser enrutada al microservicio http://rest-app:
 Si queres agregar la capacidad de balanceo de carga entre la comunicacion del nginx con los server a el/los que se comunica simplemente tenes que agregar dentro de tu archivo llamado default.conf el upstream con las IP y puertos de los servers backend. 
 Supone que levantaste 3 containers de docker-app entonces para que nginx balancee la carga entre los 3 servers tenes que poner asi:
 
-> upstream backend-server {
+> upstream backend-server {  
 > 	server http://192.18.0.2:8080;  
 > 	server http://192.18.0.3:8080;  
 > 	server http://192.18.0.4:8080;  
