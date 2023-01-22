@@ -13,19 +13,19 @@ Si queres agregar la capacidad de balanceo de carga entre la comunicacion del ng
 Supone que levantaste 3 containers de docker-app entonces para que nginx balancee la carga entre los 3 servers tenes que poner asi:
 
 > upstream backend-server {
-> 	server http://192.18.0.2:8080;
-> 	server http://192.18.0.3:8080; 
-> 	server http://192.18.0.4:8080;
+> 	server http://192.18.0.2:8080;  
+> 	server http://192.18.0.3:8080;  
+> 	server http://192.18.0.4:8080;  
 > }
 
 Por defecto va a aplicar round robin.
 
 Y para utilizarlo lo especificas dentro del proxy_pass del location asi:
 
-> location / {
->         ...
-> 	proxy_pass http://backend-server
->         ...
+> location / {  
+>         ...  
+> 	proxy_pass http://backend-server  
+>         ...  
 > }
 
 # Tambien podes ejecutar nginx sin un Dockerfile directamente usando la misma imagen nginx del registry de docker hub
