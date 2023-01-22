@@ -31,8 +31,8 @@ Si queres podes definir dos enrutamientos distintos uno que cache los response y
 >		rewrite ^/cached(.*) /$1 break;   
 >		proxy_pass http://backend-server;  
 >
->		# Seteo de cache  
->		proxy_cache custom_cache;  
+>		# Seteo de cache    
+>		proxy_cache custom_cache;    
 >		proxy_cache_valid any 10m;  
 >		# proxy_cache_key $proxy_host$request_uri$cookie_jessionid; #Util para guardar response en base al usuario logueado es decir por session caso real un >endpoint /shopping-cart en ese caso el cache de dicho endpoint va a hacerse por session para que a vos no te aparezca un carrito de compras de otra persona.  
 >		add_header X-Proxy-Cache $upstream_cache_status;  
