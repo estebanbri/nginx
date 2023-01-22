@@ -1,7 +1,7 @@
 # NGINX Reverse Proxy + Cache + Load balancing
 Ejemplo simple para demostrar como funciona proxy reverso que llama al container docker que tiene corriendo el tomcat de docker-microservice y permitiendo cachear o no response en base al request.
 
-Funciones de un proxy reverso:
+Funciones de un Proxy Inverso:
 - ***Anonimato de los backend servers***:  puesto que el reverse proxy es el único acceso a la red interna, es decir los clientes acceden por IP publica a nyginx y el mismo nginx es quien se conecta con la red interna privada, es decir nunca exponemos a la red publica nuestros backend server, los backend servers tienen que estar dentro de una red interna privada sin acceso via red publica.
 - ***Proteccion de los backend servers***: ademas podemos nginx puede gestionar certificados ssl asi quitamos la carga de manejar los cert SSL a los servidores backend.
 - ***Balanceo de carga (Load balancing)***: aumenta disponibilidad de tu app, en caso de que se caiga un backend sv redirige la carga a los server funcionales.
