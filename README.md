@@ -1,12 +1,28 @@
-# NGINX Reverse Proxy + Cache + Load balancing
+# NGINX Reverse Proxy
 Ejemplo simple para demostrar como funciona proxy reverso que llama al container docker que tiene corriendo el tomcat de docker-microservice y permitiendo cachear o no response en base al request.
 
-Funciones de un Proxy Inverso:
+## Funciones de un Proxy Inverso:
 - ***Anonimato de los backend servers***:  puesto que el reverse proxy es el único acceso a la red interna, es decir los clientes acceden por IP publica a nyginx y el mismo nginx es quien se conecta con la red interna privada, es decir nunca exponemos a la red publica nuestros backend server, los backend servers tienen que estar dentro de una red interna privada sin acceso via red publica.
 - ***Proteccion de los backend servers***: ademas podemos nginx puede gestionar certificados ssl asi quitamos la carga de manejar los cert SSL a los servidores backend.
 - ***Balanceo de carga (Load balancing)***: aumenta disponibilidad de tu app, en caso de que se caiga un backend sv redirige la carga a los server funcionales.
 - ***Caching***
 - ***Compresion***: de data entrante y saliente (ej, gizp)
+
+## Configurando el Caching
+Definendo dentro del archivo default.conf definimos una cache reutilizable (por varias locations):
+
+> proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=custom_cache:10m inactive=60m;
+
+Y dentro del location para configuramos la cache que va a usar dicho location:
+
+> location / {  
+>         ...  
+> 	proxy_cache custom_cache;  
+>		proxy_cache_valid any 10m;  
+>		# proxy_cache_key $proxy_host$request_uri$cookie_jessionid; #Util para guardar response en base al usuario logueado es decir por session caso real un endpoint /shopping-cart en ese caso el cache de dicho endpoint va a hacerse por session para que a vos no te aparezca un carrito de compras de otra persona.  
+		add_header X-Proxy-Cache $upstream_cache_status;  
+>         ...  
+> }
 
 ### localhost/cached 
 Dicha url localhost/cached va a ser enrutado al microservicio http://rest-app:8080 y va a cachear el response
@@ -15,7 +31,7 @@ Nota: para ver si el request hizo un HIT o MISS en cache, fijate en el response 
 ### localhost/nocached
 Dicha url localhost/nocached va a ser enrutada al microservicio http://rest-app:8080 y NO va a cachear el response
 
-# Load balancing
+## Configurando el Balanceo de Carga (Load balancing)
 Si queres agregar la capacidad de balanceo de carga entre la comunicacion del nginx con los server a el/los que se comunica simplemente tenes que agregar dentro de tu archivo llamado default.conf el upstream con las IP y puertos de los servers backend. 
 Supone que levantaste 3 containers de docker-app entonces para que nginx balancee la carga entre los 3 servers tenes que poner asi:
 
@@ -35,7 +51,7 @@ Y para utilizarlo lo especificas dentro del proxy_pass del location asi:
 >         ...  
 > }
 
-# Tambien podes ejecutar nginx sin un Dockerfile directamente usando la misma imagen nginx del registry de docker hub
+## Tambien podes ejecutar nginx sin un Dockerfile directamente usando la misma imagen nginx del registry de docker hub
 Veamos las alternativas podes usar una o ambas dependiendo de tus necesidades:
 
 ### Alternativa 1: nginx como Reverse proxy (+ Load Balancing) (ubicacion del archivo default.conf: /etc/nginx/conf.d/):
