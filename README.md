@@ -30,7 +30,6 @@ Si queres podes definir dos enrutamientos distintos uno que cache los response y
 >		# Enrutado   
 >		rewrite ^/cached(.*) /$1 break;   
 >		proxy_pass http://backend-server;  
->
 >		# Seteo de cache    
 >		proxy_cache custom_cache;    
 >		proxy_cache_valid any 10m;  
