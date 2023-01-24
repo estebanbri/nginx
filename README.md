@@ -1,7 +1,7 @@
 # NGINX
 ## Caracteristicas de nginx
 - Es un Web Server (para servir recursos estaticos como html,css,js) y ademas puede usarse como Reverse Proxy.
-- Puede manejar 10 mil conexiones concurrentes simultaneos gracias a su arquitectura "Event Driven"  (usa Event Loop)
+- Puede manejar 10 mil conexiones concurrentes simultaneos gracias a su arquitectura "Event Driven"  (usa Event Loop) por esto es muy popular para sitios web con alto trafico.
 
 ## Funciones de un Proxy Inverso:
 - ***Anonimato de los backend servers***:  puesto que el reverse proxy es el único acceso a la red interna, es decir los clientes acceden por IP publica a nyginx y el mismo nginx es quien se conecta con la red interna privada, es decir nunca exponemos a la red publica nuestros backend server, los backend servers tienen que estar dentro de una red interna privada sin acceso via red publica.
