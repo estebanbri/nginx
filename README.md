@@ -1,6 +1,6 @@
 # NGINX
 ## Caracteristicas de nginx
-- Es un Web Server (para servir recursos estaticos como html,css,js) y ademas puede usarse como Reverse Proxy.
+- Es un ***Web Server*** (para servir recursos estaticos como html,css,js) y ademas puede usarse como ***Reverse Proxy***.
 - Puede manejar 10 mil conexiones concurrentes simultaneos gracias a su arquitectura "Event Driven"  (usa Event Loop) por esto es muy popular para sitios web con alto trafico.
 
 ## Funciones de un Proxy Inverso:
