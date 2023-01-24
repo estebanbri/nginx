@@ -1,12 +1,43 @@
-# NGINX Reverse Proxy
-Ejemplo simple para demostrar como funciona proxy reverso que llama al container docker que tiene corriendo el tomcat de docker-microservice y permitiendo cachear o no response en base al request.
+# NGINX
+## Caracteristicas de nginx
+- Es un Web Server (para servir recursos estaticos como html,css,js) y ademas puede usarse como Reverse Proxy.
+- Puede manejar 10 mil conexiones concurrentes simultaneos gracias a su arquitectura "Event Driven"  (usa Event Loop)
 
 ## Funciones de un Proxy Inverso:
 - ***Anonimato de los backend servers***:  puesto que el reverse proxy es el único acceso a la red interna, es decir los clientes acceden por IP publica a nyginx y el mismo nginx es quien se conecta con la red interna privada, es decir nunca exponemos a la red publica nuestros backend server, los backend servers tienen que estar dentro de una red interna privada sin acceso via red publica.
 - ***Proteccion de los backend servers***: ademas podemos nginx puede gestionar certificados ssl asi quitamos la carga de manejar los cert SSL a los servidores backend.
 - ***Balanceo de carga (Load balancing)***: aumenta disponibilidad de tu app, en caso de que se caiga un backend sv redirige la carga a los server funcionales.
-- ***Caching***
+- ***Caching***: maneja HTTP Cache
 - ***Compresion***: de data entrante y saliente (ej, gizp)
+
+## Personalizar el comportamiento de tu server nginx
+Lo hacemos en archivo de configuracion por defecto de nginx lo encontramos en el /etc/nginx/nginx.conf, dentro del mismo podemos definir directivas (una directiva es un par de clave-valor, pudiendo se un valor unico o definir un contexto entre llaves).
+
+Ejemplo basico:
+> # main (global) context
+> user nobody;
+> error_log /var/log/ngnix/error.log; # Especifica donde se van a guardar los logs de error del server
+>
+> http { # http context puede definir 1 o mas server
+>   server {
+>      listen 80;
+>      access_log /var/log/ngnix/access.log; # Permite el keep track y loguear cada request
+>      
+>      # Para usarlo como web server para servir recursos estaticos (se especifica con la directiva root para indicarle donde estan los archivos estaticos)
+>      location / {
+>	   root /app/wwww/; # Especifica la ruta donde se encuentra el archivo index html	
+>          index  index.html;
+>      }
+>      location ~* \.(js|jpg|png|css)$ {
+>          root /app/wwww/; # Especifica la ruta donde se encuentra los archivos css, js, imagenes...
+>      }
+>      # Para usarlo como reverse proxy (se especifica con la proxy_pass para indicarle la ip y puerto del server al que tiene que redirigir el request)
+>      location / {
+>	   proxy_pass http://192.19.23.4:3000; # Reverse proxy hacia otro server	
+>      }
+>   }
+> }
+>
 
 ## Configurando el Caching
 Definendo dentro del archivo default.conf definimos una cache reutilizable (por varias locations):
