@@ -113,4 +113,7 @@ Supone que almacenaste el archivo default.conf en tu ruta local D:\data\IdeaProj
 
 > docker run --name myngnix --rm -d -v D:\data\IdeaProjects\nginx\index.html:/usr/share/nginx/html/index.html -p 80:80 nginx
 
+## Como acceder desde internet a mi NGINX
+![alt text](https://github.com/estebanbri/nginx/blob/master/Access-NGINX-via-Internet.png)
+
 
