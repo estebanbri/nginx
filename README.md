@@ -32,7 +32,7 @@ http { # http context puede definir 1 o mas server
           root /app/wwww/; # Especifica la ruta donde se encuentra los archivos css, js, imagenes...  
       }  
       # Para usarlo como reverse proxy (se especifica con la proxy_pass para indicarle la ip y puerto del server al que tiene que redirigir el request)  
-      location / {  
+      location /api {  
 	   proxy_pass http://192.19.23.4:3000; # Reverse proxy hacia otro server	  
       }  
    }  
