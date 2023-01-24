@@ -15,15 +15,15 @@ Lo hacemos en archivo de configuracion por defecto de nginx lo encontramos en el
 
 ### Ejemplo basico de nginx.conf:
 ```
-\# main (global) context  
+# main (global) context  
 user nobody;  
-error_log /var/log/ngnix/error.log; \# Especifica donde se van a guardar los logs de error del server   
-http { \# http context puede definir 1 o mas server  
+error_log /var/log/ngnix/error.log; # Especifica donde se van a guardar los logs de error del server   
+http { # http context puede definir 1 o mas server  
    server {  
       listen 80;  
       access_log /var/log/ngnix/access.log; # Permite el keep track y loguear cada request  
       
-      \# Para usarlo como web server para servir recursos estaticos (se especifica con la directiva root para indicarle donde estan los archivos estaticos)  
+      # Para usarlo como web server para servir recursos estaticos (se especifica con la directiva root para indicarle donde estan los archivos estaticos)  
       location / {  
 	   root /app/wwww/; # Especifica la ruta donde se encuentra el archivo index html	  
           index  index.html;  
@@ -31,7 +31,7 @@ http { \# http context puede definir 1 o mas server
       location ~* \.(js|jpg|png|css)$ {  
           root /app/wwww/; # Especifica la ruta donde se encuentra los archivos css, js, imagenes...  
       }  
-      \# Para usarlo como reverse proxy (se especifica con la proxy_pass para indicarle la ip y puerto del server al que tiene que redirigir el request)  
+      # Para usarlo como reverse proxy (se especifica con la proxy_pass para indicarle la ip y puerto del server al que tiene que redirigir el request)  
       location / {  
 	   proxy_pass http://192.19.23.4:3000; # Reverse proxy hacia otro server	  
       }  
