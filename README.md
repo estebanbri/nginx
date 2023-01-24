@@ -13,11 +13,10 @@
 ## Personalizar el comportamiento de tu server nginx
 Lo hacemos en archivo de configuracion por defecto de nginx lo encontramos en el /etc/nginx/nginx.conf, dentro del mismo podemos definir directivas (una directiva es un par de clave-valor, pudiendo se un valor unico o definir un contexto entre llaves).
 
-Ejemplo basico:  
+### Ejemplo basico de nginx.conf:  
 > \# main (global) context  
 > user nobody;  
-> error_log /var/log/ngnix/error.log; \# Especifica donde se van a guardar los logs de error del server  
->  
+> error_log /var/log/ngnix/error.log; \# Especifica donde se van a guardar los logs de error del server   
 > http { \# http context puede definir 1 o mas server  
 >   server {  
 >      listen 80;  
