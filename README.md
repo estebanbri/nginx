@@ -1,6 +1,6 @@
 # NGINX
 ## Caracteristicas de nginx
-- Es un Web Server (para servir recursos estaticos como html,css,js) y ademas puede usarse como Reverse Proxy.
+- Es un ***Web Server*** (para servir recursos estaticos como html,css,js) y ademas puede usarse como ***Reverse Proxy***.
 - Puede manejar 10 mil conexiones concurrentes simultaneos gracias a su arquitectura "Event Driven"  (usa Event Loop) por esto es muy popular para sitios web con alto trafico.
 
 ## Funciones de un Proxy Inverso:
@@ -23,13 +23,11 @@ http { # http context puede definir 1 o mas server
       listen 80;  
       access_log /var/log/ngnix/access.log; # Permite el keep track y loguear cada request  
       
-      # Para usarlo como web server para servir recursos estaticos (se especifica con la directiva root para indicarle donde estan los archivos estaticos)  
+      # Para usarlo como web server para servir recursos estaticos (se especifica con la directiva root para indicarle donde estan los archivos estaticos html,css,js)  
       location / {  
-	   root /app/wwww/; # Especifica la ruta donde se encuentra el archivo index html	  
+	  root /app/static; # Especifica la ruta de la carpeta 'static' la cual tiene dentro los archivos estaticos (html,js,css, img)	  
           index  index.html;  
-      }  
-      location ~* \.(js|jpg|png|css)$ {  
-          root /app/wwww/; # Especifica la ruta donde se encuentra los archivos css, js, imagenes...  
+	  try_files $uri $uri/ /index.html =404; # Le indica a nginx que trate de matchear los archivos solicitados en la URL (URI) con los archivos disponibles dentro de la ruta especificada en la directiva root de este location. Por ej, si en la URL viene /main.bundle.js entonces va a matchear con el archivo main.bundle.js y lo va a retornar al cliente a dicho archivo js. Pero si no encuentra ningun match, it will default to index.html.
       }  
       # Para usarlo como reverse proxy (se especifica con la proxy_pass para indicarle la ip y puerto del server al que tiene que redirigir el request)  
       location /api {  
@@ -112,5 +110,18 @@ Supone que almacenaste el archivo default.conf en tu ruta local D:\data\IdeaProj
 ### Alternativa 2: nginx para servir recursos estaticos (ubicacion de recursos static: /usr/share/nginx/html/):
 
 > docker run --name myngnix --rm -d -v D:\data\IdeaProjects\nginx\index.html:/usr/share/nginx/html/index.html -p 80:80 nginx
+
+## Como acceder desde internet a mi NGINX
+![alt text](https://github.com/estebanbri/nginx/blob/master/Access-NGINX-via-Internet2.png)
+
+###Explicacion:
+1. Cliente ingresa en browser el domain name (ej: www.guru.com)
+2. Se trata de resolver la "IP Publica" destino que se le corresponde a dicho domain name ingresado por cliente.
+- Si el mapping domain-name con IP destino se encuentra en la cache DNS del browser se retorna la IP destino al cliente.
+- Si el mapping domain-name con IP destino se encuentra en la cache DNS del router se retorna la IP destino al cliente.
+- Si no se encuentra en los dos pasos anteriores, se hace un request con destino a los Public DNS servers que se encuentran en internet y se retorna la IP destino.
+3. Se hace el actual request inicial solicitado por el cliente pero ahora ya con la "IP Publica" destino (63.121.32.59) resuelta en vez del nombre de dominio.
+4. El request es recibido por el router de la red privada del destino, en este punto la "IP publica" ya se descarta ya que estamos dentro de la red privada y en este punto lo que si importa es el puerto definido en el request para que el router puede hacer el  'Port Forwarding', que basicamente el router mantiene una tabla de mapping entre incoming_port y IP Privada:PORT. (Segun la imagen como no se especifica el puerto explicitamente por defecto es el puerto 80 para HTTP)
+5. Nginx recibe el request y mediante la configuracion seteada en nginx.cong va a a enviar el request al server que se corresponda con el nombre de dominio solicitado (en este caso guru.com:80 nginx va a enrutar el request al server 192.168.0.101:8080)
 
 
