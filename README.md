@@ -128,3 +128,6 @@ Supone que almacenaste el archivo default.conf en tu ruta local D:\data\IdeaProj
 
 - Nota 1: los DNS solamente mapean domain_names a ip (sin puerto), es decir los DNS server o los DNS cache no manejan numeros de puertos, una vez resuelta la consulta al DNS para la obtencion de la IP destino, el cliente le hace un append del puerto que necesita contactarse al server a la IP destino para generar el actual request al server.  
 - Nota 2: La IP privada del router de tu red privada se conoce tambien como 'Puerta de enlace' o 'Gateway' o 'eth0'
+
+## Ejemplo real del Port Forwarding hecho por router
+![alt text]([https://github.com/estebanbri/nginx/blob/master/Access-NGINX-via-Internet2.png](https://github.com/estebanbri/nginx/blob/master/Ejemplo-real-configuracion-port-forwarding-router.png))
