@@ -112,6 +112,16 @@ Supone que almacenaste el archivo default.conf en tu ruta local D:\data\IdeaProj
 > docker run --name myngnix --rm -d -v D:\data\IdeaProjects\nginx\index.html:/usr/share/nginx/html/index.html -p 80:80 nginx
 
 ## Como acceder desde internet a mi NGINX
-![alt text](https://github.com/estebanbri/nginx/blob/master/Access-NGINX-via-Internet.png)
+![alt text](https://github.com/estebanbri/nginx/blob/master/Access-NGINX-via-Internet2.png)
+
+###Explicacion:
+1. Cliente ingresa en browser el domain name (ej: www.guru.com)
+2. Se trata de resolver la "IP Publica" destino que se le corresponde a dicho domain name ingresado por cliente.
+- Si el mapping domain-name con IP destino se encuentra en la cache DNS del browser se retorna la IP destino al cliente.
+- Si el mapping domain-name con IP destino se encuentra en la cache DNS del router se retorna la IP destino al cliente.
+- Si no se encuentra en los dos pasos anteriores, se hace un request con destino a los Public DNS servers que se encuentran en internet y se retorna la IP destino.
+3. Se hace el actual request inicial solicitado por el cliente pero ahora ya con la "IP Publica" destino (63.121.32.59) resuelta en vez del nombre de dominio.
+4. El request es recibido por el router de la red privada del destino, en este punto la "IP publica" ya se descarta ya que estamos dentro de la red privada y en este punto lo que si importa es el puerto definido en el request para que el router puede hacer el  'Port Forwarding', que basicamente el router mantiene una tabla de mapping entre incoming_port y IP Privada:PORT. (Segun la imagen como no se especifica el puerto explicitamente por defecto es el puerto 80 para HTTP)
+5. Nginx recibe el request y mediante la configuracion seteada en nginx.cong va a a enviar el request al server que se corresponda con el nombre de dominio solicitado (en este caso guru.com:80 nginx va a enrutar el request al server 192.168.0.101:8080)
 
 
