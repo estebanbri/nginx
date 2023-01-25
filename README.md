@@ -5,7 +5,7 @@
 
 ## Funciones de un Proxy Inverso:
 - ***Enturamiento de request de clientes***: En base a datos del request, como:  
-	- el ***DOMAIN_NAME*** definido en el header Host (server_name en nginx)  
+	- el ***DOMAIN_NAME*** definido en el header Host (server_name guru.com en nginx)  
 	- el ***PATH*** definida en la URL (location /pagos-service en nginx)  
 el mismo nginx sabe a que server necesita enrutar el request. Ya que el cliente por ej contactandose por el puerto 80 de nginx que es el puerto implicito por defecto, el mismo nginx se encarga de mapearle segun el ***DOMAIN_NAME*** o ***PATH*** solicitado la IP:puerto del server destino privado. (con esto les facilitas la vida a los clientes de no hacerles memoriazar los puertos de las aplicaciones que necesitan consultar)  
 - ***Anonimato de los backend servers***:  puesto que el reverse proxy es el único acceso a la red interna, es decir los clientes acceden por IP publica a nyginx y el mismo nginx es quien se conecta con la red interna privada, es decir nunca exponemos a la red publica nuestros backend server, los backend servers tienen que estar dentro de una red interna privada sin acceso via red publica.
