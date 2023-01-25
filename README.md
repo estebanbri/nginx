@@ -4,9 +4,9 @@
 - Puede manejar 10 mil conexiones concurrentes simultaneos gracias a su arquitectura "Event Driven"  (usa Event Loop) por esto es muy popular para sitios web con alto trafico.
 
 ## Funciones de un Proxy Inverso:
-- Enturamiento de request de clientes: En base a datos del request, como:
-- el domain_name definido en el header Host (definido como server_name)
-- el path (ej: location /pagos-service)
+- ***Enturamiento de request de clientes***: En base a datos del request, como:
+	- el domain_name definido en el header Host (definido como server_name)
+	- el path (ej: location /pagos-service)
 el mismo nginx sabe a que server necesita enrutar el request. Ya que el cliente por ej contactandose por el puerto 80 de nginx que es el puerto implicito por defecto, el mismo nginx se encarga de mapearle segun el nombre de dominio o path solicitado la IP:puerto del server destino privado. (con esto les facilitas la vida a los clientes de no hacerles memoriazar los puertos de las aplicaciones que necesitan consultar)  
 - ***Anonimato de los backend servers***:  puesto que el reverse proxy es el único acceso a la red interna, es decir los clientes acceden por IP publica a nyginx y el mismo nginx es quien se conecta con la red interna privada, es decir nunca exponemos a la red publica nuestros backend server, los backend servers tienen que estar dentro de una red interna privada sin acceso via red publica.
 - ***Proteccion de los backend servers***: ademas podemos nginx puede gestionar certificados ssl asi quitamos la carga de manejar los cert SSL a los servidores backend.
