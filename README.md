@@ -111,10 +111,10 @@ Supone que almacenaste el archivo default.conf en tu ruta local D:\data\IdeaProj
 
 > docker run --name myngnix --rm -d -v D:\data\IdeaProjects\nginx\index.html:/usr/share/nginx/html/index.html -p 80:80 nginx
 
-## Como acceder desde internet a mi NGINX
+## Como acceder desde internet a mi NGINX funcionaodo como un Reverse Proxy de mis servers privados.
 ![alt text](https://github.com/estebanbri/nginx/blob/master/Access-NGINX-via-Internet2.png)
 
-###Explicacion:
+### Explicacion:
 1. Cliente ingresa en browser el domain name (ej: www.guru.com)
 2. Se trata de resolver la "IP Publica" destino que se le corresponde a dicho domain name ingresado por cliente.
 - Si el mapping domain-name con IP destino se encuentra en la cache DNS del browser se retorna la IP destino al cliente.
