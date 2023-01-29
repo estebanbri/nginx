@@ -127,11 +127,12 @@ Supone que almacenaste el archivo default.conf en tu ruta local D:\data\IdeaProj
 3. Se hace el actual request inicial solicitado por el cliente pero ahora ya con la "IP Publica" destino (63.121.32.59) resuelta junto con del nombre de dominio en el header llamado HOST, asi por ej:
 > GET 63.121.32.59:80  
 > Host guru.com
-4. El request es recibido por el router de la red privada del destino, en este punto la "IP publica" ya se descarta ya que estamos dentro de la red privada y en este punto lo que si importa es el puerto definido en el request para que el router puede hacer el  'Port Forwarding', que basicamente el router mantiene una tabla de mapping entre incoming_port y IP Privada:PORT. (Segun la imagen como no se especifica el puerto explicitamente por defecto es el puerto 80 para HTTP)
+4. El request es recibido por el router de la red privada del destino, en este punto la "IP publica" ya se descarta ya que estamos dentro de la red privada y en este punto lo que si importa es el puerto definido en el request para que el router puede hacer el  'Port Forwarding' (NAT), que basicamente el router mantiene una tabla de mapping entre incoming_port y IP Privada:PORT. (Segun la imagen como no se especifica el puerto explicitamente por defecto es el puerto 80 para HTTP)
 5. Nginx recibe el request y mediante la configuracion seteada en nginx.cong va a a enviar el request al server que se corresponda con el nombre de dominio solicitado en el header 'Host' del request. (en este caso guru.com:80 nginx va a enrutar el request al server 192.168.0.101:8080)
 
 - Nota 1: los DNS solamente mapean domain_names a ip (sin puerto), es decir los DNS server o los DNS cache no manejan numeros de puertos, una vez resuelta la consulta al DNS para la obtencion de la IP destino, el cliente le hace un append del puerto que necesita contactarse al server a la IP destino para generar el actual request al server.  
 - Nota 2: La IP privada del router de tu red privada se conoce tambien como 'Puerta de enlace' o 'Gateway' o 'eth0'
+- Nota 3: El Port forwarding es un tipo de Network Address Translation (NAT). Es una técnica utilizada para redirigir el tráfico de entrada desde una dirección IP pública a una dirección IP privada en el interior de una red privada.
 
-## Ejemplo real del Port Forwarding hecho por router
+## Ejemplo real del Port Forwarding (NAT) hecho por router
 ![alt text](https://github.com/estebanbri/nginx/blob/master/Ejemplo-real-configuracion-port-forwarding-router.png)
