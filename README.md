@@ -136,3 +136,6 @@ Supone que almacenaste el archivo default.conf en tu ruta local D:\data\IdeaProj
 
 ## Ejemplo real del Port Forwarding (NAT) hecho por router
 ![alt text](https://github.com/estebanbri/nginx/blob/master/Ejemplo-real-configuracion-port-forwarding-router.png)
+
+## Tutorial para servir angular apps via Nginx
+https://www.youtube.com/watch?v=hK0OS4E_xjM
