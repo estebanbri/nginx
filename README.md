@@ -139,3 +139,6 @@ Supone que almacenaste el archivo default.conf en tu ruta local D:\data\IdeaProj
 
 ## Tutorial para servir angular apps via Nginx
 https://www.youtube.com/watch?v=hK0OS4E_xjM
+
+## Tutorial configuracion SSL
+https://www.youtube.com/watch?v=AqgClYuy1wM
