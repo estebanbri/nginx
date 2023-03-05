@@ -141,7 +141,7 @@ Tutorial excelente de redes en español (Explica lo de Port Fordwarding y mucho 
 
 ***Nota***: La tecnica de 'Port Forwarding' para dar acceso a tu red no es seguro porque le estas dando a conocer la IP Pública de tu router a los demas y estas creando un agujero en tu red al mundo externo al mapear puertos con apps dentro de tu red. Por otro lado hay algunos router que no te permiten abrirle los puertos. Por ende aparecen utiles alternativas como:
 - VPN's 
-- 'Cloudflare Tunneling' el cual actua de intermediario entre el cliente de internet que hace el request y tu red privada sin pasar por tu router, es decir el cliente hace un request a la IP de cloudflare y cloudflare se comunica directamente con tu IP privada de manera segura y encriptada gracias a tunnel creado por Cloudflare.
+- 'Cloudflare Tunneling' (Tunel TCP) el cual actua de intermediario entre el cliente de internet que hace el request y tu red privada sin pasar por tu router, es decir el cliente hace un request a la IP de cloudflare y cloudflare se comunica directamente con tu IP privada de manera segura y encriptada gracias a tunnel creado por Cloudflare (El tunel es creado y gestionado por el container docker que contiene el servicio de cloudflare tunneling).
 
 ***Nota***: Las siguientes nomenclaturas de IP del router son equivalentes 'IP Publica' = 'WAN IP' y la 'IP Privada' = 'LAN IP'.
 
