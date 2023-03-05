@@ -8,8 +8,8 @@
 	- el ***DOMAIN_NAME*** definido en el header Host del request (server_name guru.com en nginx)  
 	- el ***PATH*** definida en la URL (location /pagos-service en nginx)  
 el mismo nginx sabe a que server necesita enrutar el request. Ya que el cliente por ej contactandose por el puerto 80 de nginx que es el puerto implicito por defecto, el mismo nginx se encarga de mapearle segun el ***DOMAIN_NAME*** o ***PATH*** solicitado la IP:puerto del server destino privado. (con esto les facilitas la vida a los clientes de no hacerles memoriazar los puertos de las aplicaciones que necesitan consultar)  
-- ***Anonimato de los backend servers***:  puesto que el reverse proxy es el único acceso a la red interna, es decir los clientes acceden por IP publica a nyginx y el mismo nginx es quien se conecta con la red interna privada, es decir nunca exponemos a la red publica nuestros backend server, los backend servers tienen que estar dentro de una red interna privada sin acceso via red publica.
-- ***Proteccion de los backend servers***: ademas podemos nginx puede gestionar certificados ssl asi quitamos la carga de manejar los cert SSL a los servidores backend.
+- ***Anonimato de los backend servers***: sin nginx funcionando como reverse proxy, no te queda otra que el cliente tenga que acordarse los puertos de cada app
+- ***Proteccion de los backend servers***: ademas podemos nginx puede gestionar certificados ssl asi quitamos la carga de manejar los cert SSL a los servidores backend. Y con el certificado cifrar y segurizar la comunicacion entre el cliente y nginx.
 - ***Balanceo de carga (Load balancing)***: aumenta disponibilidad de tu app, en caso de que se caiga un backend sv redirige la carga a los server funcionales.
 - ***Caching***: maneja HTTP Cache
 - ***Compresion***: de data entrante y saliente (ej, gizp)
