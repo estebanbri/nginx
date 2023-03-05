@@ -154,5 +154,5 @@ Es una UI web para gestionar nginx en caso de que lo necesites UNICAMENTE como P
 ## Tutorial para servir angular apps via Nginx
 https://www.youtube.com/watch?v=hK0OS4E_xjM
 
-## Tutorial configuracion SSL
+## Tutorial configuracion SSL (Para cifrar comunicacion entre cliente y server)
 https://www.youtube.com/watch?v=AqgClYuy1wM
