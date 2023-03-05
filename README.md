@@ -139,7 +139,7 @@ Supone que almacenaste el archivo default.conf en tu ruta local D:\data\IdeaProj
 
 Tutorial excelente de redes en español (Explica lo de Port Fordwarding y mucho mas): https://www.youtube.com/watch?v=kfUnTEOx7m8&list=PLOkfrWrF2MlnJCARuBJnbNnYdyQN2qMqZ
 
-***Nota***: Por un lado acceder a tu red via comunicación directa a la IP Publica de tu router + Port Forwarding no es algo seguro, porque le estas dando a conocer la IP Pública de tu router a los demas y estas creando un agujero en tu red al mundo externo al mapear puertos con apps dentro de tu red. Por otro lado hay algunos router que no te permiten abrirle los puertos. Por ende aparecen utiles alternativas como:
+***Nota***: La tecnica de 'Port Forwarding' para dar acceso a tu red no es seguro porque le estas dando a conocer la IP Pública de tu router a los demas y estas creando un agujero en tu red al mundo externo al mapear puertos con apps dentro de tu red. Por otro lado hay algunos router que no te permiten abrirle los puertos. Por ende aparecen utiles alternativas como:
 - VPN's 
 - 'Cloudflare Tunneling' el cual actua de intermediario entre el cliente de internet que hace el request y tu red privada sin pasar por tu router, es decir el cliente hace un request a la IP de cloudflare y cloudflare se comunica directamente con tu IP privada de manera segura y encriptada gracias a tunnel creado por Cloudflare.
 
