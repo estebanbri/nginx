@@ -116,7 +116,7 @@ Supone que almacenaste el archivo default.conf en tu ruta local D:\data\IdeaProj
 > docker run --name myngnix --rm -d -v D:\data\IdeaProjects\nginx\index.html:/usr/share/nginx/html/index.html -p 80:80 nginx
 
 ## Como acceder desde internet a mi NGINX funcionaodo como un Reverse Proxy de mis servers privados.
-![alt text](https://github.com/estebanbri/nginx/blob/master/Access-NGINX-via-Internet2.png)
+![alt text](https://github.com/estebanbri/nginx/img/blob/master/Access-NGINX-via-Internet2.png)
 
 ### Explicacion:
 1. Cliente ingresa en browser el domain name (ej: www.guru.com)
@@ -135,7 +135,7 @@ Supone que almacenaste el archivo default.conf en tu ruta local D:\data\IdeaProj
 - Nota 3: El Port forwarding es un tipo de Network Address Translation (NAT). Es una técnica utilizada para redirigir el tráfico de entrada desde una dirección IP pública a una dirección IP privada en el interior de una red privada.
 
 ## Ejemplo real del Port Forwarding (NAT) hecho por router
-![alt text](https://github.com/estebanbri/nginx/blob/master/Ejemplo-real-configuracion-port-forwarding-router.png)
+![alt text](https://github.com/estebanbri/nginx/img/blob/master/Ejemplo-real-configuracion-port-forwarding-router.png)
 
 Tutorial excelente de redes en español (Explica lo de Port Fordwarding y mucho mas): https://www.youtube.com/watch?v=kfUnTEOx7m8&list=PLOkfrWrF2MlnJCARuBJnbNnYdyQN2qMqZ
 
