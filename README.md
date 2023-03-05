@@ -157,7 +157,7 @@ Es un servicio de DNS dinamico gratis, que basicamente como todo servicio DNS la
 ## NGINX PROXY MANAGER
 Es una UI web para gestionar nginx en caso de que lo necesites UNICAMENTE como PROXY REVERSO + LOAD BALANCING (a diferencia de nginx clasico, NPM no te permite manejarlo como web server to serve static content) asi evitas el manejo de archivos de configuración. Te permite gestionar certificados SSL muy facilmente (tiene soporte especial para certificados letsencrypt que se autorenuevan out of the box). Ojo nada te impide de que agregues tanto un Nginx para servir static content y aparte tener el Nginx Proxy Manager en el frente que llame a dicho nginx. 
 
-## ¿Necesitas gestionar DNS dentro de tu propia red privada LAN? Solucion: Usar Bind, un servidor de DNS local.
+## ¿Necesitas gestionar DNS dentro de tu propia red privada LAN? Solucion: Usar BIND, es un servidor de DNS local. Almacena DNS para usarla dentro de tu red interna privada, y si un usuario dentro de la red consulta por una dns que BIND no la tiene, el mismo BIND (previamente habiendole configurado otro server de DNS de internet como los de google 8.8.8.8) se conecta con los servers DNS de internet para buscarlo para buscar el DNS. Nuestro server DNS local BIND funcionaria como un pasamanos de los DNS servers de internet.
 
 ## Tutorial para servir angular apps via Nginx
 https://www.youtube.com/watch?v=hK0OS4E_xjM
