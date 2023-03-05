@@ -137,6 +137,18 @@ Supone que almacenaste el archivo default.conf en tu ruta local D:\data\IdeaProj
 ## Ejemplo real del Port Forwarding (NAT) hecho por router
 ![alt text](https://github.com/estebanbri/nginx/blob/master/Ejemplo-real-configuracion-port-forwarding-router.png)
 
+Nota: el Port Forwarding no es seguro, porque le estas dando a conocer la IP Pública de tu router. Hay otras alternativas mas segura como la que ofrece Cloudflare que es el 'Cloudflare Tunneling' el cual actua de intermediario entre el cliente de internet que hace el request y tu router, es decir el cliente hace un request a la IP de cloudflare y cloudflare se comunica con tu router. Y con esto impedimos que los clientes de internet conozcan tu IP publica.
+
+## ¿Que sucede si no contraté una IP Publica estatica a mi ISP, es decir tengo una IP Publica Dinamica? Solución: DUCK DNS
+Es un servicio de DNS dinamico gratis, que basicamente la funcion que cumple es asociar un "nombre de dominio" (midominio.com) a la IP Publica de tu router. Como los proveedores de internet generalmente te dan IP's Publicas dinamicas, es decir reinicias el router y te asigna otra IP Publica al router, aca en donde entra en juego el concepto de un servicio de DNS Dinamico tiene la capacidad de asociar un nombre de dominio  a una IP Publica dinamica. El servicio de DuckDNS cada vez que cambia la IP Publica de tu router el mismo se encarga de asociar la nueva direccion IP Publica al nombre de dominio existente.
+
+¿ Como lo hace ?
+1) Ingresar a duckdns.com y registrar el dominio a la IP publica de tu router que tenes en ese momento (para saber cual es la ip publica en ese momento tenes web como cualesmiip.com).
+2) Levantas un contenedor docker con el servicio de duckdns dinamico (tenes muchas imagenes ya fabricadas ej: linuxserver/duckdns). Dicho contenedor es el que se va a estar analizando tu IP Publica de tu router y si cambió el mismo se encarga de actualizar el registro de tu IP nueva al dominio "avisandole" al registro de DNS's que mantiene duckdns a nivel global.
+
+## NGINX PROXY MANAGER
+Es una UI web para gestionar nginx en caso de que lo necesites UNICAMENTE como PROXY REVERSO/LOAD BALANCER (y no como web server to serve static content) asi evitas el manejo de archivos de configuración. Te permite gestionar certificados SSL muy facilmente (tiene soporte especial para certificados letsencrypt que se autorenuevan out of the box). Ojo nada te impide de que agregues tanto un Nginx para servir static content y aparte tener el Nginx Proxy Manager que llame a dicho nginx.
+
 ## Tutorial para servir angular apps via Nginx
 https://www.youtube.com/watch?v=hK0OS4E_xjM
 
