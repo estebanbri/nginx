@@ -143,6 +143,8 @@ Tutorial excelente de redes en español (Explica lo de Port Fordwarding y mucho 
 - VPN's 
 - 'Cloudflare Tunneling' el cual actua de intermediario entre el cliente de internet que hace el request y tu red privada sin pasar por tu router, es decir el cliente hace un request a la IP de cloudflare y cloudflare se comunica directamente con tu IP privada de manera segura y encriptada gracias a tunnel creado por Cloudflare.
 
+***Nota***: Las siguientes nomenclaturas de IP del router son equivalentes 'IP Publica' = 'WAN IP' y la 'IP Privada' = 'LAN IP'.
+
 ## ¿Que sucede si no contraté una IP Publica estatica a mi ISP, es decir tengo una IP Publica Dinamica? Solución: ***DUCK DNS***
 Es un servicio de DNS dinamico gratis, que basicamente como todo servicio DNS la funcion que cumple es asociar un "nombre de dominio" (http://{tu-sub-dominio}.duckdns.org) a la IP Publica de tu router pero la particularidad que tiene es que como los proveedores de internet generalmente te dan IP's Publicas dinamicas, es decir reinicias el router y te asigna otra IP Publica al router, DUCK DNS tiene la capacidad de asociar un nombre de dominio  a una IP Publica dinamica. El servicio de DuckDNS cada vez que cambia la IP Publica de tu router el mismo se encarga de asociar la nueva direccion IP Publica al nombre de dominio existente.
 
