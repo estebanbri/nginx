@@ -160,11 +160,13 @@ Es una UI web para gestionar nginx en caso de que lo necesites UNICAMENTE como P
 ## ¿Necesitas gestionar DNS dentro de tu propia red privada LAN? Solucion: Usar ***BIND***, es un servidor de DNS local. Almacena DNS para usarla dentro de tu red interna privada, y si un usuario dentro de la red consulta por una dns que BIND no la tiene, el mismo BIND (previamente habiendole configurado otro server de DNS de internet como los de google 8.8.8.8) se conecta con los servers DNS de internet para buscarlo para buscar el DNS. Nuestro server DNS local BIND funcionaria como un pasamanos de los DNS servers de internet.
 
 ## Como saber la IP de un nombre de dominio en linux: ***nslookup***
-> nslookup gurudev.level3.com {IP-DNS-SERVER}
-
-> Domain: gurudev.level3.com
-> Address: 192.168.19.1
-
+```
+nslookup gurudev.level3.com {IP-DNS-SERVER}
+```
+```
+ Domain: gurudev.level3.com
+ Address: 192.168.19.1
+```
 Nota: {IP-DNS-SERVER} es opcional en caso de que quieras consultar en especifico a un server DNS.
 
 ## Tutorial para servir angular apps via Nginx
