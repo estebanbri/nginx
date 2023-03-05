@@ -137,7 +137,7 @@ Supone que almacenaste el archivo default.conf en tu ruta local D:\data\IdeaProj
 ## Ejemplo real del Port Forwarding (NAT) hecho por router
 ![alt text](https://github.com/estebanbri/nginx/blob/master/Ejemplo-real-configuracion-port-forwarding-router.png)
 
-Tutorial excelente de redes en español (Explica lo de Port Fordwarding): https://www.youtube.com/watch?v=kfUnTEOx7m8
+Tutorial excelente de redes en español (Explica lo de Port Fordwarding y mucho mas): https://www.youtube.com/watch?v=kfUnTEOx7m8&list=PLOkfrWrF2MlnJCARuBJnbNnYdyQN2qMqZ
 
 Nota: el Port Forwarding no es seguro, porque le estas dando a conocer la IP Pública de tu router. Hay otras alternativas mas segura como la que ofrece Cloudflare que es el 'Cloudflare Tunneling' el cual actua de intermediario entre el cliente de internet que hace el request y tu router, es decir el cliente hace un request a la IP de cloudflare y cloudflare se comunica con tu router. Y con esto impedimos que los clientes de internet conozcan tu IP publica.
 
