@@ -155,7 +155,7 @@ Es un servicio de DNS dinamico gratis, que basicamente como todo servicio DNS la
 2) Levantas un contenedor docker con el servicio de duckdns dinamico (tenes muchas imagenes ya fabricadas ej: linuxserver/duckdns). Dicho contenedor es el que se va a estar analizando tu IP Publica de tu router y si cambió el mismo se encarga de actualizar el registro de tu IP nueva al dominio "avisandole" al registro de DNS's que mantiene duckdns a nivel global.
 
 ## NGINX PROXY MANAGER
-Es una UI web para gestionar nginx en caso de que lo necesites UNICAMENTE como PROXY REVERSO (a diferencia de nginx clasico, NPM no te permite manejarlo como web server to serve static content ni gestionar load balancing) asi evitas el manejo de archivos de configuración. Te permite gestionar certificados SSL muy facilmente (tiene soporte especial para certificados letsencrypt que se autorenuevan out of the box). Ojo nada te impide de que agregues tanto un Nginx para servir static content + load balancing y aparte tener el Nginx Proxy Manager que llame a dicho nginx. 
+Es una UI web para gestionar nginx en caso de que lo necesites UNICAMENTE como PROXY REVERSO + LOAD BALANCING (a diferencia de nginx clasico, NPM no te permite manejarlo como web server to serve static content) asi evitas el manejo de archivos de configuración. Te permite gestionar certificados SSL muy facilmente (tiene soporte especial para certificados letsencrypt que se autorenuevan out of the box). Ojo nada te impide de que agregues tanto un Nginx para servir static content y aparte tener el Nginx Proxy Manager en el frente que llame a dicho nginx. 
 
 ## Tutorial para servir angular apps via Nginx
 https://www.youtube.com/watch?v=hK0OS4E_xjM
