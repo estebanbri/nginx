@@ -116,7 +116,7 @@ Supone que almacenaste el archivo default.conf en tu ruta local D:\data\IdeaProj
 > docker run --name myngnix --rm -d -v D:\data\IdeaProjects\nginx\index.html:/usr/share/nginx/html/index.html -p 80:80 nginx
 
 ## Como acceder desde internet a mi NGINX funcionaodo como un Reverse Proxy de mis servers privados.
-![alt text](https://github.com/estebanbri/nginx/img/blob/master/Access-NGINX-via-Internet2.png)
+![alt text](https://github.com/estebanbri/nginx/blob/master/img/Access-NGINX-via-Internet2.png)
 
 ### Explicacion:
 1. Cliente ingresa en browser el domain name (ej: www.guru.com)
@@ -135,13 +135,15 @@ Supone que almacenaste el archivo default.conf en tu ruta local D:\data\IdeaProj
 - Nota 3: El Port forwarding es un tipo de Network Address Translation (NAT). Es una técnica utilizada para redirigir el tráfico de entrada desde una dirección IP pública a una dirección IP privada en el interior de una red privada.
 
 ## Ejemplo real del Port Forwarding (NAT) hecho por router
-![alt text](https://github.com/estebanbri/nginx/img/blob/master/Ejemplo-real-configuracion-port-forwarding-router.png)
+![alt text](https://github.com/estebanbri/nginx/blob/master/img/Ejemplo-real-configuracion-port-forwarding-router.png)
 
 Tutorial excelente de redes en español (Explica lo de Port Fordwarding y mucho mas): https://www.youtube.com/watch?v=kfUnTEOx7m8&list=PLOkfrWrF2MlnJCARuBJnbNnYdyQN2qMqZ
 
 ***Nota***: La tecnica de 'Port Forwarding' para dar acceso a tu red no es seguro porque le estas dando a conocer la IP Pública de tu router a los demas y estas creando un agujero en tu red al mundo externo al mapear puertos con apps dentro de tu red. Por otro lado hay algunos router que no te permiten abrirle los puertos. Por ende aparecen utiles alternativas como:
 - VPN's 
 - 'Cloudflare Tunneling' (Tunel TCP) el cual actua de intermediario entre el cliente de internet que hace el request y tu red privada sin pasar por tu router, es decir el cliente hace un request a la IP de cloudflare y cloudflare se comunica directamente con tu IP privada de manera segura y encriptada gracias a tunnel creado por Cloudflare (El tunel es creado y gestionado por el container docker que contiene el servicio de cloudflare tunneling).
+
+![alt text](https://github.com/estebanbri/nginx/blob/master/img/cloudflare-tunneling.jpg)
 
 ***Nota***: Las siguientes nomenclaturas de IP del router son equivalentes 'IP Publica' = 'WAN IP' y la 'IP Privada' = 'LAN IP'.
 
