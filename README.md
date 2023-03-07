@@ -149,7 +149,7 @@ Tutorial excelente de redes en español (Explica lo de Port Fordwarding y mucho 
 ***Nota:***: NAT (Network Address Translation) se encarga de traducir IP Privada a IP Publica y vicebersa. Hay diferentes tipos de NAT:
 - NAT ESTATICA/FIJA: Traduce cada IP Privada a una 1 IP Publica fija. Tenes que contratar tantas IP Publicas como IP Privadas tengas en tu red. Este tipo es altamentente costo ya que por cada IP publica que el ISP te provea tiene un coste extra $, generalmente te venden bloques de IP Publica IPV4 los ISP. (cant IP Publicas = cant IP Privadas) (https://www.youtube.com/watch?v=l4SEQHDfXf8)
 - NAT DINAMICA: Traduce cada IP Privada a una IP Publica que se encuentre definida previamente en un pool de direcciones de IP Publicas que mantiene el router. Las IP Publicas de dicho pool son reutilizables por cada IP Privada. Contratas un bloque de IP Publicas al ISP para utilizarlas dentro del pool. (cant IP Publicas <=  cant IP Privadas) (https://www.youtube.com/watch?v=wd3B-DV1u2I)
-- PAT DINAMICO (Port Address Translation): Dada una unica (IP publica + Puerto) la traduce a una unica (IP Privada + Numero puerto dinamico*) *generado por el router (https://www.youtube.com/watch?v=iT6Ey8V83rY)
+- PAT DINAMICO (Port Address Translation): Traduce cada (IP Privada + Puerto) a una unica (IP publica + *Puerto dinamico) *generado por el router (https://www.youtube.com/watch?v=iT6Ey8V83rY)
 - PAT ESTATICO (Port Fordwarding) Dada una unica (IP publica + Puerto) la traduce a una unica (IP Privada + Numero puerto fijo*) (Explicado arriba)
 
 ## ¿Que sucede si no contraté una IP Publica estatica a mi ISP, es decir tengo una IP Publica Dinamica? Solución: ***DUCK DNS***
