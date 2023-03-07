@@ -147,10 +147,10 @@ Tutorial excelente de redes en español (Explica lo de Port Fordwarding y mucho 
 
 ***Nota***: Las siguientes nomenclaturas de IP del router son equivalentes 'IP Publica' = 'WAN IP' y la 'IP Privada' = 'LAN IP'.
 ***Nota:***: NAT (Network Address Translation) se encarga de traducir IP Privada a IP Publica y vicebersa. Hay diferentes tipos de NAT:
-- NAT ESTATICA/FIJA: Mapea cada IP Privada a una 1 IP Publica fija. (https://www.youtube.com/watch?v=l4SEQHDfXf8)
-- NAT DINAMICA: Mapea cada IP Privada a una IP Publica que se encuentre definida previamente en un pool de direcciones de IP Publicas que mantiene el router. Las IP Publicas de dicho pool son reutilizables por cada IP Privada. (https://www.youtube.com/watch?v=wd3B-DV1u2I)
-- PAT DINAMICO (Port Address Translation): Mapea cada IP Privada a unica IP Publica + Numero puerto dinamico generado por el router (https://www.youtube.com/watch?v=iT6Ey8V83rY)
-- Port Fordwarding (PAT ESTATICO) Mapea un numero de puerto fijo de la IP Publica a una IP Privada + Numero de puerto fijo (Explicado arriba)
+- NAT ESTATICA/FIJA: Traduce cada IP Privada a una 1 IP Publica fija. Tenes que contratar tantas IP Publicas como IP Privadas tengas en tu red. Este tipo es altamentente costo ya que por cada IP publica que el ISP te provea tiene un coste extra $, generalmente te venden bloques de IP Publica IPV4 los ISP. (cant IP Publicas = cant IP Privadas) (https://www.youtube.com/watch?v=l4SEQHDfXf8)
+- NAT DINAMICA: Traduce cada IP Privada a una IP Publica que se encuentre definida previamente en un pool de direcciones de IP Publicas que mantiene el router. Las IP Publicas de dicho pool son reutilizables por cada IP Privada. Contratas un bloque de IP Publicas al ISP para utilizarlas dentro del pool. (cant IP Publicas <=  cant IP Privadas) (https://www.youtube.com/watch?v=wd3B-DV1u2I)
+- PAT DINAMICO (Port Address Translation): Dada una unica (IP publica + Puerto) la traduce a una unica (IP Privada + Numero puerto dinamico*) *generado por el router (https://www.youtube.com/watch?v=iT6Ey8V83rY)
+- PAT ESTATICO (Port Fordwarding) Dada una unica (IP publica + Puerto) la traduce a una unica (IP Privada + Numero puerto fijo*) (Explicado arriba)
 
 ## ¿Que sucede si no contraté una IP Publica estatica a mi ISP, es decir tengo una IP Publica Dinamica? Solución: ***DUCK DNS***
 Es un servicio de DNS dinamico gratis, que basicamente como todo servicio DNS la funcion que cumple es asociar un "nombre de dominio" (http://{tu-sub-dominio}.duckdns.org) a la IP Publica de tu router pero la particularidad que tiene es que como los proveedores de internet generalmente te dan IP's Publicas dinamicas, es decir reinicias el router y te asigna otra IP Publica al router, DUCK DNS tiene la capacidad de asociar un nombre de dominio  a una IP Publica dinamica. El servicio de DuckDNS cada vez que cambia la IP Publica de tu router el mismo se encarga de asociar la nueva direccion IP Publica al nombre de dominio existente.
